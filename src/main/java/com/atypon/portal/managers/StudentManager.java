@@ -1,4 +1,4 @@
-package com.example.demo.managers;
+package com.atypon.portal.managers;
 
 import org.springframework.stereotype.Component;
 

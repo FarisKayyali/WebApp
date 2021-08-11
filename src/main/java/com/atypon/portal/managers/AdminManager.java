@@ -1,13 +1,9 @@
-package com.example.demo.managers;
+package com.atypon.portal.managers;
 
 
 
-import com.example.demo.usertypes.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import com.atypon.portal.usertypes.Admin;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 
 import javax.persistence.EntityManager;

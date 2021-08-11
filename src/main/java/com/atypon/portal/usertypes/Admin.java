@@ -1,11 +1,10 @@
-package com.example.demo.usertypes;
+package com.atypon.portal.usertypes;
 
-import jdk.jfr.Name;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 
 @Entity
 public class Admin {
