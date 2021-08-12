@@ -1,14 +1,14 @@
 package com.atypon.portal.managers;
 
-import com.atypon.portal.usertypes.Admin;
-import com.atypon.portal.usertypes.Instructor;
-import com.atypon.portal.usertypes.Student;
+import com.atypon.portal.entities.Student;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @Component
 public class StudentManager {
@@ -21,5 +21,19 @@ public class StudentManager {
         query.setParameter(1, username);
         query.setParameter(2, password);
         return new Student((Object[]) query.getSingleResult());
+    }
+
+    public List<String> getStudentCourses(String studentId){
+
+        String queryStr = "select coid, grade from studentcourses where stid = ?1";
+        Query query = entityManager.createNativeQuery(queryStr);
+        query.setParameter(1, studentId);
+        List<Object[]> list = query.getResultList();
+        List<String> data = new ArrayList<>();
+        for (Object[] o : list){
+            data.add(o[0].toString());
+            data.add(o[1].toString());
+        }
+        return data;
     }
 }

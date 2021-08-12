@@ -2,7 +2,7 @@ package com.atypon.portal.managers;
 
 
 
-import com.atypon.portal.usertypes.Admin;
+import com.atypon.portal.entities.Admin;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 @Component
 public class AdminManager {

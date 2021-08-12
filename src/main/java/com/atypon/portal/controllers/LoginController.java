@@ -4,15 +4,19 @@ import com.atypon.portal.managers.AdminManager;
 import com.atypon.portal.managers.InstructorManager;
 import com.atypon.portal.managers.StudentManager;
 import com.atypon.portal.services.LoginService;
-import com.atypon.portal.usertypes.Admin;
-import com.atypon.portal.usertypes.Instructor;
-import com.atypon.portal.usertypes.Student;
+import com.atypon.portal.entities.Admin;
+import com.atypon.portal.entities.Instructor;
+import com.atypon.portal.entities.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.logging.Handler;
 
 @Controller
 public class LoginController {
@@ -45,12 +49,14 @@ public class LoginController {
                 case "Instructor":
                     Instructor instructor = instructorManager.validateInstructor(name, password);
                     model.addAttribute("name", instructor.getName());
-                    return "welcome";
+                    return "is";
 
                 case "Student":
                     Student student = studentManager.validateStudent(name, password);
+                    List<String> courses = studentManager.getStudentCourses(student.getId());
                     model.addAttribute("name", student.getName());
-                    return "welcome";
+                    model.addAttribute("courses", courses);
+                    return "is";
 
             }
         } catch (Exception e) {

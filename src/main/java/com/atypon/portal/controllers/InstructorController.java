@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class StudentController {
+public class InstructorController {
 
-    @RequestMapping(value = "/student", method = RequestMethod.POST)
-    public String studentPost(@RequestParam String name, @RequestParam String password, @RequestParam String usertype, ModelMap model){
-        return "student";
+    @RequestMapping(value = "/instructor", method = RequestMethod.POST)
+    public String insPost(@RequestParam String name, @RequestParam String password, @RequestParam String usertype, ModelMap model){
+        return "instructor";
     }
 }

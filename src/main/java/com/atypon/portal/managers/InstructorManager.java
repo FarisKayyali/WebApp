@@ -1,13 +1,11 @@
 package com.atypon.portal.managers;
 
-import com.atypon.portal.usertypes.Admin;
-import com.atypon.portal.usertypes.Instructor;
+import com.atypon.portal.entities.Instructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 @Component
 public class InstructorManager {

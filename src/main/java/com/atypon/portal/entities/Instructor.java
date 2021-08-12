@@ -1,11 +1,11 @@
-package com.atypon.portal.usertypes;
+package com.atypon.portal.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Student {
+public class Instructor {
     @Id
     String id;
 
@@ -15,7 +15,7 @@ public class Student {
     @Column(name = "password")
     String password;
 
-    public Student(Object[] columns) {
+    public Instructor(Object[] columns) {
         this.id = (String) columns[0];
         this.name = (String) columns[1];
         this.password = (String) columns[2];

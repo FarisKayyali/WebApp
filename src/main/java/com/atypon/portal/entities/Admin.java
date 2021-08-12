@@ -1,4 +1,4 @@
-package com.atypon.portal.usertypes;
+package com.atypon.portal.entities;
 
 
 
