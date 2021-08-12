@@ -30,7 +30,10 @@
       }
       h1 {
       text-align:center;
-      fone-size:18;
+      }
+      h2 {
+      text-align:center;
+      font-size:20;
       }
       button:hover {
       opacity: 0.8;
@@ -57,7 +60,8 @@
   </head>
   <body>
     <form action="/admin" method ="POST">
-      <h1>Write sql statement</h1>
+      <h1>Welcome ${name}</h1>
+      <h2>Write sql statement</h2>
       <p><font color="red">${errorMessage}</font></p>
       <p><font color="green">${doneMessage}</font></p>
       <div class="formcontainer">

@@ -2,6 +2,7 @@ package com.atypon.portal.usertypes;
 
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -22,5 +23,9 @@ public class Admin {
         this.id = (String) columns[0];
         this.name = (String) columns[1];
         this.password = (String) columns[2];
+    }
+
+    public String getName() {
+        return name;
     }
 }

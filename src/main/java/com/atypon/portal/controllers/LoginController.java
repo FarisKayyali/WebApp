@@ -4,6 +4,9 @@ import com.atypon.portal.managers.AdminManager;
 import com.atypon.portal.managers.InstructorManager;
 import com.atypon.portal.managers.StudentManager;
 import com.atypon.portal.services.LoginService;
+import com.atypon.portal.usertypes.Admin;
+import com.atypon.portal.usertypes.Instructor;
+import com.atypon.portal.usertypes.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,27 +35,29 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPost(@RequestParam String name, @RequestParam String password, @RequestParam String usertype, ModelMap model) {
+        try {
+            switch (usertype) {
+                case "Admin":
+                    Admin admin = adminManager.validateAdmin(name, password);
+                    model.addAttribute("name", admin.getName());
+                    return "admin";
 
-        switch (usertype) {
-            case "Admin":
-//                if ((admin = adminManager.validateAdmin(name, password)) != null) {
-//                    model.addAttribute("name", name);
-//                    return "admin";
-//                }
-//                break;
-            case "Instructor":
-                instructorManager.validateInstructor(name, password);
-                model.addAttribute("name", name);
-                return "welcome";
-            case "Student":
-                studentManager.validateStudent(name, password);
-                model.addAttribute("name", name);
-                return "admin";
+                case "Instructor":
+                    Instructor instructor = instructorManager.validateInstructor(name, password);
+                    model.addAttribute("name", instructor.getName());
+                    return "welcome";
+
+                case "Student":
+                    Student student = studentManager.validateStudent(name, password);
+                    model.addAttribute("name", student.getName());
+                    return "welcome";
+
+            }
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Please check your input fields!!");
+
         }
-
-        model.addAttribute("errorMessage", "Please check your input fields!!");
         return "login";
-
     }
 
 }
