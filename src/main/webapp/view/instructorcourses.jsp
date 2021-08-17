@@ -1,3 +1,4 @@
+<%@ page import ="java.util.List"%>
 <html>
   <head>
     <title>WebApp</title>
@@ -13,7 +14,7 @@
       }
       input[type=text], input[type=password] {
       width: 100%;
-      padding: 16px 8px;
+      padding: 16px 100px;
       margin: 8px 0;
       display: inline-block;
       border: 1px solid #ccc;
@@ -30,14 +31,17 @@
       }
       h1 {
       text-align:center;
-      fone-size:18;
+      }
+      h2 {
+      text-align:center;
+      font-size:20;
       }
       button:hover {
       opacity: 0.8;
       }
       .formcontainer {
       text-align: left;
-      margin: 24px 50px 12px;
+      margin: 24px 150px 12px;
       }
       .container {
       padding: 16px 0;
@@ -48,7 +52,6 @@
       padding-top: 0;
       padding-right: 15px;
       }
-      /* Change styles for span on extra small screens */
       @media screen and (max-width: 300px) {
       span.psw {
       display: block;
@@ -57,25 +60,28 @@
     </style>
   </head>
   <body>
-    <form action="/login" method="POST">
-      <h1>Login Form</h1>
-      <p><font color="red">${errorMessage}</font></p>
+    <form action="/instructorcourses" method ="POST">
+      <h1>Welcome ${name}</h1>
+      <h2>select course</h2>
       <div class="formcontainer">
       <hr/>
       <div class="container">
-        <label for="uname"><strong>Id</strong></label>
-        <input type="text" placeholder="Enter Id" name="name" required>
-        <label for="psw"><strong>Password</strong></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <input list="usertype" type ="text" placeholder:"Enter your type" name ="usertype">
-              <datalist id="usertype">
-            <option value="Admin">
-            <option value="Instructor">
-            <option value="Student">
-          </datalist>
+        <input list="course" type ="text" placeholder:"Enter your type" name ="course">
+                      <datalist id="course">
+          <% List data= request.getAttribute("courses")==null?null:(List) request.getAttribute("courses");
+           for(int i=0;i<data.size();i++){ %>
+                <option><%=data.get(i).toString()%></option>
+           <%
+                }
+
+           %>
+
+                  </datalist>
+
       </div>
-      <button type="submit">Login</button>
+      <button type="submit" name="getStudents">Get students grade</button>
       </div>
     </form>
+
   </body>
 </html>

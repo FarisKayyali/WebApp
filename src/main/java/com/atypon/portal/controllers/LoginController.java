@@ -49,17 +49,20 @@ public class LoginController {
                 case "Instructor":
                     Instructor instructor = instructorManager.validateInstructor(name, password);
                     model.addAttribute("name", instructor.getName());
-                    return "is";
+                    List<Object[]> courses = instructorManager.getInstructorCourses(instructor.getId());
+                    model.addAttribute("courses", courses);
+                    return "instructorcourses";
 
                 case "Student":
                     Student student = studentManager.validateStudent(name, password);
-                    List<String> courses = studentManager.getStudentCourses(student.getId());
+                    List<String> courses1 = studentManager.getStudentCourses(student.getId());
                     model.addAttribute("name", student.getName());
-                    model.addAttribute("courses", courses);
-                    return "is";
+                    model.addAttribute("courses", courses1);
+                    return "student";
 
             }
         } catch (Exception e) {
+            e.printStackTrace();
             model.addAttribute("errorMessage", "Please check your input fields!!");
 
         }
